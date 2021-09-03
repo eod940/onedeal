@@ -1,13 +1,177 @@
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+<html lang="ko">
+
+<head>
+    <title>원딜텔레콤</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'onedeal/style/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'onedeal/style/css/font-awsome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'onedeal/style/css/prism-okaidia.css' %}" rel="stylesheet">
+    <link href="{% static 'onedeal/style/css/custom.min.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>hi</title>
+</head>
+<body>
+
+<!-- 네비게이션 시작 -->
+    <nav class="navbar navbar-expand-xlg navbar-fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="col-3"></div>
+            <div class="col-6"><a class="navbar-brand col-6" href="/onedeal/">
+              <img src="/static/onedeal/assets/od_logo.png" alt="logo" class="rounded mx-auto d-block" id="logo"></a>
+            </div>
+            <div class="col-3">
+                <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Home
+                      <span class="visually-hidden">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-sm-2" type="text" placeholder="Search">
+                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">
+		<div class="collapse navbar-collapse text-center" id="navbarColor03">
+				<div class="col-4">
+					<a class="nav-link active" href="/onedeal/create" style="color:black;text-weight:bold;">신청서 작성
+						<span class="visually-hidden">(current)</span>
+					</a>
+				</div>
+				<div class="col-4">
+					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">게시판(공사중)
+						<span class="visually-hidden">(current)</span>
+					</a>
+				</div>
+				<div class="col-4">
+					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">FREE
+						<span class="visually-hidden">(current)</span>
+					</a>
+				</div>
+		</div>
+
+    </nav>
+<!-- 네비게이션 끝 -->
+
+<header>
+    <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt="" class="w-100 bg-dark p-0 m-0">
+</header>
+
+<div class="bgcolor-white pb-5">
+<div class="container">
+    <div class="text-center py-4">
+        <h1>Hello, World!</h1>
+    </div>
+      <div class="row">
+
 
     <form method="post">{% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
         <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-{#            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ form.apply_email.value }} ">#}
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+{#            <div class="form-group">#}
+{#            <label class="col-form-label mt-4" for="inputDefault">이름</label>#}
+{#            <input type="text" class="form-control" placeholder="이름을 쓰시오.." id="name" value="{{ form.apply_name.value }}">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#            <label class="col-form-label mt-4" for="number">핸드폰 번호</label>#}
+{#            <input type="text" class="form-control" placeholder="phone.." id="name" value="{{ form.apply_phonenum.value }}">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#            <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>#}
+{#            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ form.apply_email.value }}">#}
+{#            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#            <label class="col-form-label mt-4" for="inputDefault">생년월일</label>#}
+{#            <input type="text" class="form-control" placeholder="6자리 xxxxxx" id="name" value="{{ form.apply_birth.value }}">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#            <label for="exampleTextarea" class="form-label mt-4">Example textarea</label>#}
+{#            <textarea class="form-control" id="exampleTextarea" rows="3" spellcheck="false" value="{{ form.apply_content.value }}"></textarea>#}
+{#            </div>#}
+
+{#            {{ form.as_table }}#}
+            <label class="col-form-label mt-4" for="inputDefault">이름</label>
+            {{ form.apply_name }}
+            <label class="col-form-label mt-4" for="inputDefault">핸드폰 번호</label>
+            {{ form.apply_phonenum }}
+            <label class="col-form-label mt-4" for="inputDefault">이메일</label>
+            {{ form.apply_email }}
+            <label class="col-form-label mt-4" for="inputDefault">생년월일</label>
+            {{ form.apply_birth }}
+            <label class="col-form-label mt-4" for="inputDefault">상세내용</label>
+            {{ form.apply_content }}
         </div>
         <button type="submit" class="btn btn-primary float-right">Submit</button>
     </form>
     {{ form.media }}
+ </div>
+</div>
+</div>
+
+
+<!-- Footer -->
+<footer class="py-5 bg-dark text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+	  <p>
+       <span style="font-weight:bold;font-family:arial;font-size:2em;color:fuchsia">원딜컴퍼니</span>
+		대표 : 소순남 | Tel. 010-3917-1175
+      </p>
+	  <p>
+	  사업자번호 : 842-05-01918 | E-mail : onedeal1207@naver.com
+	  </p>
+	  <p>
+	  주소 : 서울특별시 남부순환로 1784 2층
+	  </p>
+	  <p>
+	  Copyright 원딜.Co.Ltd. All rights reserved
+    </section>
+    <!-- Section: Text -->
+	</div>
+</footer>
+<!-- Footer -->
+
+<script src="{% static 'onedeal/style/js/jquery.min.js' %}"></script>
+  <script src="{% static 'onedeal/style/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'onedeal/style/js/prism.js' %}"></script>
+  <script src="{% static 'onedeal/style/js/custom.js' %}"></script>
+</body>
+</html>

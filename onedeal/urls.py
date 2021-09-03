@@ -18,7 +18,7 @@ from django.urls import include
 from . import views
 
 urlpatterns = [
-    path('', views.ItemList.as_view()),
+    path('', views.ItemListView.as_view()),
     path('<int:pk>/', views.LandingApplyDetail),
-    path('create/', views.LandingApplyCreate.as_view()),
+    path('create/', views.LandingApplyCreateView.as_view()),
 ]

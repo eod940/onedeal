@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 
 class LandingApply(models.Model):
-    apply_name = models.CharField(max_length=30, verbose_name="이름")
-    apply_phonenum = models.CharField(max_length=30, verbose_name="전화번호")
-    apply_email = models.EmailField(max_length=128, verbose_name="이메일 주소")
-    apply_birth = models.CharField(max_length=30, verbose_name="생년월일")
-    apply_content = models.TextField(verbose_name="상세내용")
+    apply_name = models.CharField(default="", max_length=30, verbose_name="이름")
+    apply_phonenum = models.CharField(default="", max_length=30, verbose_name="전화번호")
+    apply_email = models.EmailField(default="", max_length=128, verbose_name="이메일 주소")
+    apply_birth = models.CharField(default="", max_length=30, verbose_name="생년월일")
+    apply_content = models.TextField(default="", verbose_name="상세내용")
 
     apply_created = models.DateTimeField(auto_now_add=True, verbose_name="생성일자")
 
