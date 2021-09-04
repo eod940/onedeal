@@ -11,6 +11,7 @@
     <link href="{% static 'onedeal/style/css/font-awsome.min.css' %}" rel="stylesheet">
     <link href="{% static 'onedeal/style/css/prism-okaidia.css' %}" rel="stylesheet">
     <link href="{% static 'onedeal/style/css/custom.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <meta charset="UTF-8">
     <title>hi</title>
 </head>
@@ -86,6 +87,10 @@
 
 <header>
     <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt="" class="w-100 bg-dark p-0 m-0">
+    <div class="slider">
+    <div>I am a slide.</div>
+    <div>I am another slide.</div>
+  </div>
 </header>
 
 <div class="bgcolor-white pb-5">
@@ -194,5 +199,12 @@
   <script src="{% static 'onedeal/style/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'onedeal/style/js/prism.js' %}"></script>
   <script src="{% static 'onedeal/style/js/custom.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function(){
+      $('.slider').bxSlider();
+    });
+  </script>
 </body>
 </html>
