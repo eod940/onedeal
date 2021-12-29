@@ -23,7 +23,7 @@ from django.contrib import admin
 관리자 페이지는 본 프로젝트 url을 통해서만 접속할 수 있으며, 관리자 권한을 가진
 계정으로만 로그인 할 수 있습니다. 관리자 페이지의 구성은 다음과 같습니다.
 
-![img.png](img.png)
+![img.png](assets/img.png)
 
 관리자 페이지에서는 우선 3개의 탭을 확인할 수 있습니다.
 1. 게시글 확인 탭
@@ -43,9 +43,9 @@ from django.contrib import admin
 ---
 기기 확인 탭의 모습은 다음과 같습니다.
 
-![img_1.png](img_1.png)
+![img_1.png](assets/img_1.png)
 
-![img_2.png](img_2.png)
+![img_2.png](assets/img_2.png)
 - 기기 확인 탭에서는 <u>기기고유번호::기기명</u> 으로 구분하여 
 관리자가 한 눈에 파악하기 쉽도록 하였습니다.
 - 기기고유번호, 기기명, 수량, 가격, 세부설명, 기기 이미지, 상세페이지로 데이터를 모델링하였습니다.
@@ -55,9 +55,9 @@ from django.contrib import admin
 ---
 주문서 확인 탭의 모습은 다음과 같습니다.
 
-![img_3.png](img_3.png)
+![img_3.png](assets/img_3.png)
 
-![img_4.png](img_4.png)
+![img_4.png](assets/img_4.png)
 - 주문서 확인 탭에서는 <u>\[상담여부]-이름::생년월일</u> 으로 구분하여
 관리자가 한 눈에 파악하기 쉽도록 하였습니다.
   
@@ -69,7 +69,7 @@ from django.contrib import admin
 
 메인 페이지의 모습은 다음과 같습니다.
 
-![img_5.png](img_5.png)
+![img_5.png](assets/img_5.png)
 
 - 페이지 구성은 리스트화 시켜 가독성을 좋게 하였습니다.
 - 각 리스트는 db에 들어있는 기기 정보 record를 가져오게 됩니다.
