@@ -4,7 +4,7 @@
  본 프로젝트는 **Onedeal company**의 Online commercial site 제작 프로젝트입니다.
 본 프로젝트는 메인 페이지, 신청서 작성 페이지, 유저 게시판 페이지, 이벤트 페이지, 관리자 페이지로 구성됩니다.
 
-###Framework
+### Framework
 - [django 3.2.7](https://www.djangoproject.com/)
 - [bootstrap 5.0.1](https://getbootstrap.com/) 
 
