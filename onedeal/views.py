@@ -1,6 +1,6 @@
 from .form import LandingApplyForm
 from django.shortcuts import render
-from .models import LandingApply
+from .models import LandingApply, Post
 from .models import Item
 from django.views.generic import ListView, DetailView, CreateView
 
@@ -31,3 +31,5 @@ class LandingApplyCreateView(CreateView):
     #     else:
     #         return redirect('/onedeal')
 
+class PostListView(ListView):
+    model = Post

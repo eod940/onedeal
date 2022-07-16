@@ -1,89 +1,93 @@
-<!DOCTYPE html>
-{% load static %}
-{% load humanize %}
-<html lang="ko">
+{% extends 'onedeal/index.html' %}
 
-<head>
-    <title>원딜텔레콤</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{% static 'onedeal/style/css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'onedeal/style/css/font-awsome.min.css' %}" rel="stylesheet">
-    <link href="{% static 'onedeal/style/css/prism-okaidia.css' %}" rel="stylesheet">
-    <link href="{% static 'onedeal/style/css/custom.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-    <meta charset="UTF-8">
-    <title>hi</title>
-</head>
-<body>
+{#<!DOCTYPE html>#}
+{#{% load static %}#}
+{#{% load humanize %}#}
+{#<html lang="ko">#}
 
-<!-- 네비게이션 시작 -->
-    <nav class="navbar navbar-expand-xlg navbar-fixed-top navbar-light bg-light">
-        <div class="container-fluid">
-            <div class="col-3"></div>
-            <div class="col-6"><a class="navbar-brand col-6" href="/onedeal/">
-              <img src="/static/onedeal/assets/od_logo.png" alt="logo" class="rounded mx-auto d-block" id="logo"></a>
-            </div>
-            <div class="col-3">
-                <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarColor03">
-                <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Home
-                      <span class="visually-hidden">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-sm-2" type="text" placeholder="Search">
-                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">
-		<div class="collapse navbar-collapse text-center" id="navbarColor03">
-				<div class="col-4">
-					<a class="nav-link active" href="/onedeal/create" style="color:black;text-weight:bold;">신청서 작성
-						<span class="visually-hidden">(current)</span>
-					</a>
-				</div>
-				<div class="col-4">
-					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">게시판(공사중)
-						<span class="visually-hidden">(current)</span>
-					</a>
-				</div>
-				<div class="col-4">
-					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">FREE
-						<span class="visually-hidden">(current)</span>
-					</a>
-				</div>
-		</div>
+{#<head>#}
+{#    <title>원딜텔레콤</title>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <link href="{% static 'onedeal/style/css/bootstrap.css' %}" rel="stylesheet">#}
+{#    <link href="{% static 'onedeal/style/css/font-awsome.min.css' %}" rel="stylesheet">#}
+{#    <link href="{% static 'onedeal/style/css/prism-okaidia.css' %}" rel="stylesheet">#}
+{#    <link href="{% static 'onedeal/style/css/custom.min.css' %}" rel="stylesheet">#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">#}
+{#    <meta charset="UTF-8">#}
+{#    <title>hi</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<!-- 네비게이션 시작 -->#}
+{#    <nav class="navbar navbar-expand-xlg navbar-fixed-top navbar-light bg-light">#}
+{#        <div class="container-fluid">#}
+{#            <div class="col-3"></div>#}
+{#            <div class="col-6"><a class="navbar-brand col-6" href="/onedeal/">#}
+{#              <img src="/static/onedeal/assets/od_logo.png" alt="logo" class="rounded mx-auto d-block" id="logo"></a>#}
+{#            </div>#}
+{#            <div class="col-3">#}
+{#                <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">#}
+{#                    <span class="navbar-toggler-icon"></span>#}
+{#                  </button>#}
+{#            </div>#}
+{#            <div class="collapse navbar-collapse" id="navbarColor03">#}
+{#                <ul class="navbar-nav me-auto">#}
+{#                  <li class="nav-item">#}
+{#                    <a class="nav-link active" href="#">Home#}
+{#                      <span class="visually-hidden">(current)</span>#}
+{#                    </a>#}
+{#                  </li>#}
+{#                  <li class="nav-item">#}
+{#                    <a class="nav-link" href="#">Features</a>#}
+{#                  </li>#}
+{#                  <li class="nav-item">#}
+{#                    <a class="nav-link" href="#">Pricing</a>#}
+{#                  </li>#}
+{#                  <li class="nav-item">#}
+{#                    <a class="nav-link" href="#">About</a>#}
+{#                  </li>#}
+{#                  <li class="nav-item dropdown">#}
+{#                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>#}
+{#                    <div class="dropdown-menu">#}
+{#                      <a class="dropdown-item" href="#">Action</a>#}
+{#                      <a class="dropdown-item" href="#">Another action</a>#}
+{#                      <a class="dropdown-item" href="#">Something else here</a>#}
+{#                      <div class="dropdown-divider"></div>#}
+{#                      <a class="dropdown-item" href="#">Separated link</a>#}
+{#                    </div>#}
+{#                  </li>#}
+{#                </ul>#}
+{#                <form class="d-flex">#}
+{#                  <input class="form-control me-sm-2" type="text" placeholder="Search">#}
+{#                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>#}
+{#                </form>#}
+{#              </div>#}
+{#            </div>#}
+{#    </nav>#}
+{#    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">#}
+{#		<div class="collapse navbar-collapse text-center" id="navbarColor03">#}
+{#				<div class="col-4">#}
+{#					<a class="nav-link active" href="/onedeal/create" style="color:black;text-weight:bold;">신청서 작성#}
+{#						<span class="visually-hidden">(current)</span>#}
+{#					</a>#}
+{#				</div>#}
+{#				<div class="col-4">#}
+{#					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">게시판(공사중)#}
+{#						<span class="visually-hidden">(current)</span>#}
+{#					</a>#}
+{#				</div>#}
+{#				<div class="col-4">#}
+{#					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">FREE#}
+{#						<span class="visually-hidden">(current)</span>#}
+{#					</a>#}
+{#				</div>#}
+{#		</div>#}
+{##}
+{#    </nav>#}
+{#<!-- 네비게이션 끝 -->#}
 
-    </nav>
-<!-- 네비게이션 끝 -->
+{% include  %}
 
 <header>
     <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt="" class="w-100 bg-dark p-0 m-0">

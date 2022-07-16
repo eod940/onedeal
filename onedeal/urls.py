@@ -21,4 +21,5 @@ urlpatterns = [
     path('', views.ItemListView.as_view()),
     path('<int:pk>/', views.LandingApplyDetail),
     path('create/', views.LandingApplyCreateView.as_view()),
+    path('post/', views.PostListView.as_view())
 ]
