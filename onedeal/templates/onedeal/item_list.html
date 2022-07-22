@@ -1,213 +1,54 @@
-{% extends 'onedeal/index.html' %}
+{% extends "onedeal/index.html" %}
+{% load humanize %}
 
-{#<!DOCTYPE html>#}
-{#{% load static %}#}
-{#{% load humanize %}#}
-{#<html lang="ko">#}
-{##}
-{#<head>#}
-{#    <title>원딜텔레콤</title>#}
-{#    <meta charset="UTF-8">#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
-{#    <link href="{% static 'onedeal/style/css/bootstrap.css' %}" rel="stylesheet">#}
-{#    <link href="{% static 'onedeal/style/css/font-awsome.min.css' %}" rel="stylesheet">#}
-{#    <link href="{% static 'onedeal/style/css/prism-okaidia.css' %}" rel="stylesheet">#}
-{#    <link href="{% static 'onedeal/style/css/custom.min.css' %}" rel="stylesheet">#}
-{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">#}
-{#    <meta charset="UTF-8">#}
-{#    <title>hi</title>#}
-{#</head>#}
-{#<body>#}
-{##}
-{#<!-- 네비게이션 시작 -->#}
-{#    <nav class="navbar navbar-expand-xlg navbar-fixed-top navbar-light bg-light">#}
-{#        <div class="container-fluid">#}
-{#            <div class="col-3"></div>#}
-{#            <div class="col-6"><a class="navbar-brand col-6" href="/onedeal/">#}
-{#              <img src="/static/onedeal/assets/od_logo.png" alt="logo" class="rounded mx-auto d-block" id="logo"></a>#}
-{#            </div>#}
-{#            <div class="col-3">#}
-{#                <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">#}
-{#                    <span class="navbar-toggler-icon"></span>#}
-{#                  </button>#}
-{#            </div>#}
-{#            <div class="collapse navbar-collapse" id="navbarColor03">#}
-{#                <ul class="navbar-nav me-auto">#}
-{#                  <li class="nav-item">#}
-{#                    <a class="nav-link active" href="#">Home#}
-{#                      <span class="visually-hidden">(current)</span>#}
-{#                    </a>#}
-{#                  </li>#}
-{#                  <li class="nav-item">#}
-{#                    <a class="nav-link" href="#">Features</a>#}
-{#                  </li>#}
-{#                  <li class="nav-item">#}
-{#                    <a class="nav-link" href="#">Pricing</a>#}
-{#                  </li>#}
-{#                  <li class="nav-item">#}
-{#                    <a class="nav-link" href="#">About</a>#}
-{#                  </li>#}
-{#                  <li class="nav-item dropdown">#}
-{#                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>#}
-{#                    <div class="dropdown-menu">#}
-{#                      <a class="dropdown-item" href="#">Action</a>#}
-{#                      <a class="dropdown-item" href="#">Another action</a>#}
-{#                      <a class="dropdown-item" href="#">Something else here</a>#}
-{#                      <div class="dropdown-divider"></div>#}
-{#                      <a class="dropdown-item" href="#">Separated link</a>#}
-{#                    </div>#}
-{#                  </li>#}
-{#                </ul>#}
-{#                <form class="d-flex">#}
-{#                  <input class="form-control me-sm-2" type="text" placeholder="Search">#}
-{#                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>#}
-{#                </form>#}
-{#              </div>#}
-{#            </div>#}
-{#    </nav>#}
-{#    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">#}
-{#		<div class="collapse navbar-collapse text-center" id="navbarColor03">#}
-{#				<div class="col-4">#}
-{#					<a class="nav-link active" href="/onedeal/create" style="color:black;text-weight:bold;">신청서 작성#}
-{#						<span class="visually-hidden">(current)</span>#}
-{#					</a>#}
-{#				</div>#}
-{#				<div class="col-4">#}
-{#					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">게시판(공사중)#}
-{#						<span class="visually-hidden">(current)</span>#}
-{#					</a>#}
-{#				</div>#}
-{#				<div class="col-4">#}
-{#					<a class="nav-link active" href="#" style="color:black;text-weight:bold;">FREE#}
-{#						<span class="visually-hidden">(current)</span>#}
-{#					</a>#}
-{#				</div>#}
-{#		</div>#}
-{##}
-{#    </nav>#}
-{#<!-- 네비게이션 끝 -->#}
-{##}
-{##}
-{#<header>#}
-{#    <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt="" class="w-100 bg-dark p-0 m-0">#}
-{#    <div class="slider">#}
-{#    <div>I am a slide.</div>#}
-{#    <div>I am another slide.</div>#}
-{#  </div>#}
-{#</header>#}
-{##}
-{#<div class="bgcolor-white pb-5">#}
-{#<div class="container">#}
-{#    <div class="text-center py-4">#}
-{#        <h1>Hello, World!</h1>#}
-{#    </div>#}
-{#      <div class="row">#}
-{#    {% for item in object_list %}#}
-{#        <div class="col-6 pb-4">#}
-{#          <div class="card">#}
-{#            <div class="row no-gutters">#}
-{#              <div class="col-sm-4">#}
-{#                  {% if item.item_img %}#}
-{#                <img src="{{ item.item_img.url }}" alt="기기이미지" class="card-img m-4 text-center" />#}
-{#                  {% else %}#}
-{#                      <img src="https://picsum.photos/seed/picsum/200/300" alt="noimg" class="card-img m-3 text-center">#}
-{#                  {% endif %}#}
-{#              </div>#}
-{#              <div class="col-sm-8">#}
-{#                <div class="card-body">#}
-{#                    <h4 class="card-title mt-4">{{ item.item_name }}</h4>#}
-{#                    <h5 class="text-danger">{{ item.item_price | intcomma }} 원</h5>#}
-{#                    <ol class="bgcolor-gray breadcrumb py-1">#}
-{#                        <li class="breadcrumb-item active ms-3">LG</li>#}
-{#                        <li class="breadcrumb-item active">통신사 이동</li>#}
-{#                        <li class="breadcrumb-item active">공시지원할인</li>#}
-{#                        <li class="breadcrumb-item active">프리미어 에센셜</li>#}
-{#                    </ol>#}
-{#                  <div class="card-text small text-muted">- 원딜 특별할인: {{ item.item_price | intcomma }}원</div>#}
-{#                  <div class="card-text small text-muted">- 공시지원할인: {{ item.item_price | intcomma }}원</div>#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#      </div>#}
-{#</div>#}
-{#</div>#}
-{##}
-{#<div>#}
-{#    <img src="https://www.km-phone.com/storage/upload/basic/202108/0000000043_20210812190052_8749.gif" alt="" class="w-100">#}
-{#</div>#}
-{##}
-{#<div class="bgcolor-gray pb-5">#}
-{#<div class="container">#}
-{#    <div class="text-center py-4">#}
-{#        <h1>Hello, World!</h1>#}
-{#    </div>#}
-{#      <div class="row">#}
-{#    {% for item in object_list %}#}
-{#        <div class="col-6 pb-4">#}
-{#          <div class="card">#}
-{#            <div class="row no-gutters">#}
-{#              <div class="col-lg-4">#}
-{#                <img src="https://www.km-phone.com/storage/upload/phone/202108/0000000043_20210818234253_7787.png" alt="" class="card-img m-3" />#}
-{#              </div>#}
-{#              <div class="col-lg-8">#}
-{#                <div class="card-body">#}
-{#                    <h4 class="card-title mt-4">{{ item.item_name }}</h4>#}
-{#                    <h5 class="text-danger">{{ item.item_price }} 원</h5>#}
-{#                    <ol class="bgcolor-gray breadcrumb py-1">#}
-{#                        <li class="breadcrumb-item active ms-3">LG</li>#}
-{#                        <li class="breadcrumb-item active">통신사 이동</li>#}
-{#                        <li class="breadcrumb-item active">공시지원할인</li>#}
-{#                        <li class="breadcrumb-item active">프리미어 에센셜</li>#}
-{#                    </ol>#}
-{#                  <div class="card-text">- {{ item.item_content }}</div>#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#      </div>#}
-{#</div>#}
-{#</div>#}
-{##}
-{#<!-- Footer -->#}
-{#<footer class="py-5 bg-dark text-white">#}
-{#  <!-- Grid container -->#}
-{#  <div class="container p-4">#}
-{##}
-{#    <!-- Section: Text -->#}
-{#    <section class="mb-4">#}
-{#	  <p>#}
-{#       <span style="font-weight:bold;font-family:arial;font-size:2em;color:fuchsia">원딜컴퍼니</span>#}
-{#		대표 : 소순남 | Tel. 010-3917-1175#}
-{#      </p>#}
-{#	  <p>#}
-{#	  사업자번호 : 842-05-01918 | E-mail : onedeal1207@naver.com#}
-{#	  </p>#}
-{#	  <p>#}
-{#	  주소 : 서울특별시 남부순환로 1784 2층#}
-{#	  </p>#}
-{#	  <p>#}
-{#	  Copyright 원딜.Co.Ltd. All rights reserved#}
-{#    </section>#}
-{#    <!-- Section: Text -->#}
-{#	</div>#}
-{#</footer>#}
-{#<!-- Footer -->#}
-{##}
-{#<script src="{% static 'onedeal/style/js/jquery.min.js' %}"></script>#}
-{#  <script src="{% static 'onedeal/style/js/bootstrap.bundle.min.js' %}"></script>#}
-{#  <script src="{% static 'onedeal/style/js/prism.js' %}"></script>#}
-{#  <script src="{% static 'onedeal/style/js/custom.js' %}"></script>#}
-{#  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>#}
-{#  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>#}
-{#<script>#}
-{#    $(document).ready(function(){#}
-{#      $('.slider').bxSlider();#}
-{#    });#}
-{#  </script>#}
-{#</body>#}
-{#</html>#}
+{% block header %}
+    <header>
+    <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt="" class="w-100 bg-dark p-0 m-0">
+    <div class="slider">
+    <div>I am a slide.</div>
+    <div>I am another slide.</div>
+  </div>
+</header>
+{% endblock %}
+
+{# Main Content #}
+{% block mainContent %}
+    <div class="bgcolor-white pb-5">
+        <div class="container">
+    <div class="text-center py-4">
+        <h1>Hello, World!</h1>
+    </div>
+      <div class="row">
+    {% for item in object_list %}
+        <div class="col-6 pb-4">
+          <div class="card">
+            <div class="row no-gutters">
+              <div class="col-sm-4">
+                  {% if item.item_img %}
+                <img src="{{ item.item_img.url }}" alt="기기이미지" class="card-img m-4 text-center" />
+                  {% else %}
+                      <img src="https://picsum.photos/seed/picsum/200/300" alt="noimg" class="card-img m-3 text-center">
+                  {% endif %}
+              </div>
+              <div class="col-sm-8">
+                <div class="card-body">
+                    <h4 class="card-title mt-4">{{ item.item_name }}</h4>
+                    <h5 class="text-danger">{{ item.item_price | intcomma }} 원</h5>
+                    <ol class="bgcolor-gray breadcrumb py-1">
+                        <li class="breadcrumb-item active ms-3">LG</li>
+                        <li class="breadcrumb-item active">통신사 이동</li>
+                        <li class="breadcrumb-item active">공시지원할인</li>
+                        <li class="breadcrumb-item active">프리미어 에센셜</li>
+                    </ol>
+                  <div class="card-text small text-muted">- 원딜 특별할인: {{ item.item_price | intcomma }}원</div>
+                  <div class="card-text small text-muted">- 공시지원할인: {{ item.item_price | intcomma }}원</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+      </div>
+</div>
+</div>
+{% endblock %}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 {% load humanize %}
+
 <html lang="ko">
 
 <head>
@@ -22,100 +23,28 @@
 <!-- 네비게이션 끝 -->
 
 
-<header>
-    {% block header %}
-        <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt=""
-             class="w-100 bg-dark p-0 m-0">
-        <div class="slider">
-            <div>I am a slide.</div>
-            <div>I am another slide.</div>
-        </div>
-    {% endblock %}
-</header>
-{% lorem 3 random %}
-<div class="bgcolor-white pb-5">
-    <div class="container">
-        <div class="text-center py-4">
-            <h1>Hello, World!</h1>
-        </div>
-        <div class="row">
-            {% for item in object_list %}
-                <div class="col-6 pb-4">
-                    <div class="card">
-                        <div class="row no-gutters">
-                            <div class="col-sm-4">
-                                {% if item.item_img %}
-                                    <img src="{{ item.item_img.url }}" alt="기기이미지" class="card-img m-4 text-center"/>
-                                {% else %}
-                                    <img src="https://picsum.photos/seed/picsum/200/300" alt="noimg"
-                                         class="card-img m-3 text-center">
-                                {% endif %}
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="card-body">
-                                    <h4 class="card-title mt-4">{{ item.item_name }}</h4>
-                                    <h5 class="text-danger">{{ item.item_price | intcomma }} 원</h5>
-                                    <ol class="bgcolor-gray breadcrumb py-1">
-                                        <li class="breadcrumb-item active ms-3">LG</li>
-                                        <li class="breadcrumb-item active">통신사 이동</li>
-                                        <li class="breadcrumb-item active">공시지원할인</li>
-                                        <li class="breadcrumb-item active">프리미어 에센셜</li>
-                                    </ol>
-                                    <div class="card-text small text-muted">- 원딜
-                                        특별할인: {{ item.item_price | intcomma }}원
-                                    </div>
-                                    <div class="card-text small text-muted">-
-                                        공시지원할인: {{ item.item_price | intcomma }}원
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+{% block header %}
+{#    <header>#}
+{#        <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt=""#}
+{#             class="w-100 bg-dark p-0 m-0">#}
+{#        <div class="slider">#}
+{#            <div>{% lorem random %}</div>#}
+{#            <div>{% lorem random %}</div>#}
+{#        </div>#}
+{#</header>#}
+{% endblock %}
 
-<div>
-    <img src="https://www.km-phone.com/storage/upload/basic/202108/0000000043_20210812190052_8749.gif" alt=""
-         class="w-100">
-</div>
+{# main Content #}
+{% block mainContent %}
+{% endblock %}
 
-<div class="bgcolor-gray pb-5">
-    <div class="container">
-        <div class="text-center py-4">
-            <h1>Hello, World!</h1>
-        </div>
-        <div class="row">
-            {% for item in object_list %}
-                <div class="col-6 pb-4">
-                    <div class="card">
-                        <div class="row no-gutters">
-                            <div class="col-lg-4">
-                                <img src="https://www.km-phone.com/storage/upload/phone/202108/0000000043_20210818234253_7787.png"
-                                     alt="" class="card-img m-3"/>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="card-body">
-                                    <h4 class="card-title mt-4">{{ item.item_name }}</h4>
-                                    <h5 class="text-danger">{{ item.item_price }} 원</h5>
-                                    <ol class="bgcolor-gray breadcrumb py-1">
-                                        <li class="breadcrumb-item active ms-3">LG</li>
-                                        <li class="breadcrumb-item active">통신사 이동</li>
-                                        <li class="breadcrumb-item active">공시지원할인</li>
-                                        <li class="breadcrumb-item active">프리미어 에센셜</li>
-                                    </ol>
-                                    <div class="card-text">- {{ item.item_content }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+{# second AD #}
+{% block secondAD %}
+{% endblock %}
+
+{# second Content #}
+{% block secondContent %}
+{% endblock %}
 
 <!-- Footer -->
 <footer class="py-5 bg-dark text-white">
