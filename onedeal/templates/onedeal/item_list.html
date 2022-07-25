@@ -3,52 +3,59 @@
 
 {% block header %}
     <header>
-    <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt="" class="w-100 bg-dark p-0 m-0">
-    <div class="slider">
-    <div>I am a slide.</div>
-    <div>I am another slide.</div>
-  </div>
-</header>
+        <img src="https://www.km-phone.com/storage/upload/basic/202103/0000000043_20210326151704_9969.png" alt=""
+             class="w-100 bg-dark p-0 m-0">
+        <div class="slider">
+            <div>I am a slide.</div>
+            <div>I am another slide.</div>
+        </div>
+    </header>
 {% endblock %}
 
 {# Main Content #}
 {% block mainContent %}
     <div class="bgcolor-white pb-5">
         <div class="container">
-    <div class="text-center py-4">
-        <h1>Hello, World!</h1>
-    </div>
-      <div class="row">
-    {% for item in object_list %}
-        <div class="col-6 pb-4">
-          <div class="card">
-            <div class="row no-gutters">
-              <div class="col-sm-4">
-                  {% if item.item_img %}
-                <img src="{{ item.item_img.url }}" alt="기기이미지" class="card-img m-4 text-center" />
-                  {% else %}
-                      <img src="https://picsum.photos/seed/picsum/200/300" alt="noimg" class="card-img m-3 text-center">
-                  {% endif %}
-              </div>
-              <div class="col-sm-8">
-                <div class="card-body">
-                    <h4 class="card-title mt-4">{{ item.item_name }}</h4>
-                    <h5 class="text-danger">{{ item.item_price | intcomma }} 원</h5>
-                    <ol class="bgcolor-gray breadcrumb py-1">
-                        <li class="breadcrumb-item active ms-3">LG</li>
-                        <li class="breadcrumb-item active">통신사 이동</li>
-                        <li class="breadcrumb-item active">공시지원할인</li>
-                        <li class="breadcrumb-item active">프리미어 에센셜</li>
-                    </ol>
-                  <div class="card-text small text-muted">- 원딜 특별할인: {{ item.item_price | intcomma }}원</div>
-                  <div class="card-text small text-muted">- 공시지원할인: {{ item.item_price | intcomma }}원</div>
-                </div>
-              </div>
+            <div class="text-center py-4">
+                <h1>Hello, World!</h1>
             </div>
-          </div>
+            <div class="row">
+                {% for item in object_list %}
+                    <div class="col-6 pb-4">
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-sm-4">
+                                    {% if item.item_img %}
+                                        <img src="{{ item.item_img.url }}" alt="기기이미지"
+                                             class="card-img m-4 text-center"/>
+                                    {% else %}
+                                        <img src="https://picsum.photos/seed/picsum/200/300" alt="noimg"
+                                             class="card-img m-3 text-center">
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title mt-4">{{ item.item_name }}</h4>
+                                        <h5 class="text-danger">{{ item.item_price | intcomma }} 원</h5>
+                                        <ol class="bgcolor-gray breadcrumb py-1">
+                                            <li class="breadcrumb-item active ms-3">LG</li>
+                                            <li class="breadcrumb-item active">통신사 이동</li>
+                                            <li class="breadcrumb-item active">공시지원할인</li>
+                                            <li class="breadcrumb-item active">프리미어 에센셜</li>
+                                        </ol>
+                                        <div class="card-text small text-muted">- 원딜
+                                            특별할인: {{ item.item_price | intcomma }}원
+                                        </div>
+                                        <div class="card-text small text-muted">-
+                                            공시지원할인: {{ item.item_price | intcomma }}원
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    {% endfor %}
-      </div>
-</div>
-</div>
+    </div>
 {% endblock %}
