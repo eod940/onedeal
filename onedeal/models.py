@@ -34,10 +34,14 @@ class Post(models.Model):
     post_content = models.TextField(verbose_name="내용")
 
     post_created = models.DateTimeField(auto_now_add=True, verbose_name="생성일자")
+    post_img = models.ImageField(upload_to='onedeal/post/%Y/%m/%d', blank=True, verbose_name="이미지")
     post_author = models.ForeignKey(User, verbose_name="글쓴이", on_delete=models.CASCADE)  # 유저 삭제시 모두 삭제
 
     def __str__(self):
         return "{}::{}".format(self.post_title, self.post_author)
+
+    def get_absolute_url(self):
+        return '/post/'
 
     class Meta:
         verbose_name = "게시글 확인"

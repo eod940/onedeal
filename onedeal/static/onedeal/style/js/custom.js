@@ -90,3 +90,13 @@
     return lines;
   }
 })();
+
+console.log("hello user?");
+const nav = document.querySelector("#navbarColor04");
+const navChild = nav.querySelectorAll("")
+
+function navHandler() {
+
+}
+
+nav.addEventListener("mouseover", navHandler);
