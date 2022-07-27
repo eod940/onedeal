@@ -92,11 +92,11 @@
 })();
 
 console.log("hello user?");
-const nav = document.querySelector("#navbarColor04");
-const navChild = nav.querySelectorAll("")
+const nav = document.querySelector("#navbarColor04")
+// const navChild = nav.querySelectorAll("")
 
 function navHandler() {
-
+ return null
 }
 
-nav.addEventListener("mouseover", navHandler);
+nav.addEventListener("mouseover", navHandler)

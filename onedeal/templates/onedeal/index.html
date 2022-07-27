@@ -39,11 +39,11 @@
 {% endblock %}
 
 {# second AD #}
-{% block secondAD %}
+{% block advertisement %}
 {% endblock %}
 
 {# second Content #}
-{% block secondContent %}
+{% block etc %}
 {% endblock %}
 
 <!-- Footer -->
@@ -72,15 +72,16 @@
 <!-- Footer -->
 
 <script src="{% static 'onedeal/style/js/jquery.min.js' %}"></script>
+<script src="{% static 'onedeal/style/js/jquery.js' %}"></script>
 <script src="{% static 'onedeal/style/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'onedeal/style/js/prism.js' %}"></script>
 <script src="{% static 'onedeal/style/js/custom.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.slider').bxSlider();
-    });
-</script>
+{#<script>#}
+{#    $(document).ready(function () {#}
+{#        $('.slider').bxSlider();#}
+{#    });#}
+{#</script>#}
 </body>
 </html>

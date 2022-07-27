@@ -6,7 +6,7 @@
     <div class="bgcolor-white pb-5">
         <div class="container">
     <div class="text-center py-4">
-        <h1>Hello, World!</h1>
+        <h1>게시판</h1>
     </div>
       <div class="row">
     {% for post in object_list %}
@@ -27,16 +27,12 @@
                                         <h4 class="card-title mt-4">{{ post.post_title }}</h4>
                                         <h5 class="text-danger">{{ post.post_author }}</h5>
                                         <ol class="bgcolor-gray breadcrumb py-1">
-                                            <li class="breadcrumb-item active ms-3">LG</li>
-                                            <li class="breadcrumb-item active">통신사 이동</li>
-                                            <li class="breadcrumb-item active">공시지원할인</li>
-                                            <li class="breadcrumb-item active">프리미어 에센셜</li>
+                                            <li class="breadcrumb-item active ms-3">{{ post.post_created }} 작성</li>
                                         </ol>
-                                        <div class="card-text small text-muted">- 원딜
-                                            특별할인: {{ post.post_created }}원
+                                        <div class="card-text small text-muted">
                                         </div>
-                                        <div class="card-text small text-muted">-
-                                            공시지원할인: {{ post.post_content }}원
+                                        <div class="card-text small text-muted">
+                                            {{ post.post_content | truncatewords:30 }}
                                         </div>
                                     </div>
                                 </div>
