@@ -1,2 +1,5 @@
 
 SECRET_KEY = 'django-insecure-e!@btwlvo@2^+k&m39nupq$=$gqi1o&9-(u7e5u$bxeb2bzncl'
+MY_IDENTIFICATION_CODE = 'imp74307179'
+MY_IAMPORT_KEY = '2366864974345923'
+MY_IAMPORT_SECRET_KEY = 'pSiy33MfqrTf5jcOLAdmywGlXZlI85FxYX621SiskbHqvTehtsD2YknVjJEsOk0Nh7Pj07LkjsKPmZ7Q'
