@@ -11,6 +11,7 @@
       <div class="row">
     {% for post in object_list %}
                     <div class="col-6 pb-4">
+                        <a href="#">
                         <div class="card">
                             <div class="row no-gutters">
                                 <div class="col-sm-4">
@@ -25,7 +26,7 @@
                                 <div class="col-sm-8">
                                     <div class="card-body">
                                         <h4 class="card-title mt-4">{{ post.post_title }}</h4>
-                                        <h5 class="text-danger">{{ post.post_author }}</h5>
+                                        <h5 class="text-danger"><small>작성자 - </small>{{ post.post_author }}</h5>
                                         <ol class="bgcolor-gray breadcrumb py-1">
                                             <li class="breadcrumb-item active ms-3">{{ post.post_created }} 작성</li>
                                         </ol>
@@ -38,6 +39,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 {% endfor %}
       </div>

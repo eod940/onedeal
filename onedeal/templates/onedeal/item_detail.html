@@ -1,0 +1,144 @@
+{% extends 'onedeal/index.html' %}
+
+{% load humanize %}
+
+{% block title %}{{ object.item_name }} - 원딜텔레콤{% endblock %}
+
+{% block mainContent %}
+<!-- Title -->
+    {% if object.item_img %}
+        <img class="img-fluid rounded" src="{{ object.item_img.url }}" alt="{{ object.item_name }}">
+    {% endif %}
+    <h1>{{ object.item_name }}</h1>
+    <!-- Preview Image -->
+
+{% if object.category %}
+    <span class="badge bg-primary float-right">{{ object.category }}</span>
+{% else %}
+    <span class="badge bg-primary float-right">미분류</span>
+{% endif %}
+
+<!-- Author -->
+<p class="lead">
+    <a href="#">{{ object.item_price | intcomma }} 원</a>
+</p>
+
+<hr>
+
+<!-- Date/Time -->
+<p>Posted on {{ object.item_created }}
+    {% if request.user == object.author%}
+    <button type="button" class="btn btn-sm btn-outline-secondary float-right" onclick="location.href='{{ object.get_update_url }}'">EDIT</button>
+    {% endif %}
+</p>
+
+<hr>
+
+
+<!-- Post Content -->
+{#{{ object.get_markdown_content | safe }}#}
+{{ object.item_content }}
+<br>
+    <!-- 상세페이지 -->
+{{ object.item_content_img }}
+<hr>
+
+<!-- Comments Form -->
+{#<div class="card my-4">#}
+{#    <h5 class="card-header">Leave a Comment:</h5>#}
+{#    <div class="card-body">#}
+{#        <form method="post" action="{{ object.get_absolute_url }}new_comment/">{% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                {{ comment_form | crispy }}#}
+{#            </div>#}
+{#            <button type="submit" class="btn btn-primary">Submit</button>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<div id="comment-list">#}
+{#<!-- Single Comment -->#}
+{#    {% for comment in object.comment_set.all %}#}
+{#    <div class="media mb-4" id="comment-id-{{ comment.pk }}">#}
+{#        {% if comment.author.socialaccount_set.all.0.get_avatar_url %}#}
+{#        <img width="50px" class="d-flex mr-3 rounded-circle" src="{{ comment.author.socialaccount_set.all.0.get_avatar_url }}" alt="get_avatar_url">#}
+{#        {% else %}#}
+{#        <img width="50px" class="d-flex mr-3 rounded-circle" src="https://www.placehold.it/50x50" alt="get_avatar_url">#}
+{#        {% endif %}#}
+{#        <div class="media-body">#}
+{#            {% if comment.author == request.user %}#}
+{#            <button class="btn btn-sm btn-info float-right" onclick="location.href='/blog/edit_comment/{{ comment.pk }}/'">edit</button>#}
+{#            <button class="btn btn-sm btn-danger float-right" data-bs-toggle="modal" data-bs-target="#deleteCommentModal-{{ comment.pk }}">delete</button>#}
+{#            {% endif %}#}
+{#            <h5 class="mt-0">{{ comment.author }} <small class="text-muted"> {{ comment.created_at }} </small></h5>#}
+{#            {{ comment.get_markdown_content | safe }}#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endfor %}#}
+{#</div>#}
+
+<!-- Modal -->
+{% for comment in object.comment_set.all %}
+    {% if user == comment.author %}
+    <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">삭제 메시지</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    정말로 삭제하시겠습니까?
+                    <p>{{ comment.get_markdown_content | safe }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                        onclick="location.href='/blog/delete_comment/{{ comment.pk }}/'">yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
+    <button class="btn btn-secondary my-2 my-sm-0" onclick="requestPay()">결제하기</button>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+    <script>
+        let IMP = window.IMP;
+        IMP.init("imp74307179");
+
+        function requestPay() {
+            // IMP.request_pay(param, callback) 결제창 호출
+            IMP.request_pay({ // param
+                pg: "kakaopay",
+                pay_method: "kakaopay",
+                merchant_uid: "ORD20180131-0000011",
+                name: "아이폰11",
+                amount: 1900,
+                buyer_email: "gildong@gmail.com",
+                buyer_name: "홍길동",
+                buyer_tel: "010-4242-4242",
+                buyer_addr: "서울특별시 강남구 신사동",
+                buyer_postcode: "01181"
+            }, function (rsp) { // callback
+                if (rsp.success) {
+                    // jQuery로 HTTP 요청
+                    jQuery.ajax({
+                        url: "127.0.0.1:8000/onedeal/create", // 예: https://www.myservice.com/payments/complete
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        data: {
+                            imp_uid: rsp.imp_uid,
+                            merchant_uid: rsp.merchant_uid
+                        }
+                    }).done(function (data) {
+                        // 가맹점 서버 결제 API 성공시 로직
+                    })
+                } else {
+                    alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+                }
+            });
+        }
+    </script>
+{% endblock %}

@@ -63,12 +63,15 @@ class Item(models.Model):
     def __str__(self):
         return "{}::{}".format(self.item_title, self.item_name)
 
+    def get_absolute_url(self):
+        return "item/{}".format(self.pk)
+
     class Meta:
         verbose_name = "모바일기기 "
         verbose_name_plural = "기기확인"
 
 
-# class MainAdvertisement(models.Model):
+    # class MainAdvertisement(models.Model):
 #     adm_img = models.ImageField(upload_to='onedeal/%Y/%m/%d', blank=True, verbose_name="제목")
 #     adm_content = models.TextField(verbose_name="식별용 내용")
 #

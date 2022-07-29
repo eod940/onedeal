@@ -6,3 +6,22 @@ body{/*padding-top:120px*/}iframe{overflow:hidden;border:none}@media (min-width:
 .bgcolor-white{
     background-color: white;
 }
+a {
+    text-decoration: none !important;
+    color: black;
+
+}
+
+a:visited {
+    color: black;
+}
+
+/* visited link */
+a:hover {
+    color: black;
+}
+
+/* mouse over link */
+a:active {
+    color: black;
+}
