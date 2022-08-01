@@ -7,17 +7,6 @@ from billing.iamport import validation_prepare, get_transaction
 from django.db.models.signals import post_save
 
 
-# Create your models here.
-class Point(models.Model):
-    # user = models.OneToOneField(MyUser)
-    point = models.PositiveIntegerField(default=0)
-    created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    timestamp = models.DateTimeField(auto_now_add=False, auto_now=True)
-
-    def __str__(self):
-        return str(self.point)
-
-
 class PointTransactionManager(models.Manager):
     # 새로운 트랜젝션 생성
     def create_new(self, user, amount, type, success=None, transaction_status=None):
@@ -61,6 +50,17 @@ class PointTransactionManager(models.Manager):
 
     def get_recent_user(self, user, num):
         return super(PointTransactionManager, self).filter(user=user)[:num]
+
+
+# Create your models here.
+class Point(models.Model):
+    # user = models.OneToOneField(MyUser)
+    point = models.PositiveIntegerField(default=0)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    timestamp = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return str(self.point)
 
 
 class PointTransaction(models.Model):

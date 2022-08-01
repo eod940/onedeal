@@ -48,6 +48,11 @@ class Post(models.Model):
         verbose_name_plural = "게시글 확인"
 
 
+class ItemManager(models.Manager):
+    def get_queryset(self):
+        return super(ItemManager,self).get_queryset()
+
+
 class Item(models.Model):
     item_title = models.CharField(max_length=30, verbose_name="기기고유번호")
     item_name = models.CharField(max_length=30, verbose_name="기기명")
@@ -60,6 +65,8 @@ class Item(models.Model):
 
     item_created = models.DateTimeField(auto_now_add=True, verbose_name="생성일자")
 
+    objects = models.Manager()
+
     def __str__(self):
         return "{}::{}".format(self.item_title, self.item_name)
 
@@ -71,7 +78,7 @@ class Item(models.Model):
         verbose_name_plural = "기기확인"
 
 
-    # class MainAdvertisement(models.Model):
+# class MainAdvertisement(models.Model):
 #     adm_img = models.ImageField(upload_to='onedeal/%Y/%m/%d', blank=True, verbose_name="제목")
 #     adm_content = models.TextField(verbose_name="식별용 내용")
 #
