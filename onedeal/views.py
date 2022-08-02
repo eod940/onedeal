@@ -41,7 +41,7 @@ class PostListView(ListView):
 
 class ItemDetailView(DetailView):
     model = Item
-    
+
 
     # def get_queryset(self):
     #     return Item.objects.order_by('-post_created')
