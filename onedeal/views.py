@@ -12,6 +12,18 @@ class ItemListView(ListView):
         return Item.objects.order_by('-item_created')
 
 
+class ItemDetailView(DetailView):
+    model = Item
+
+
+    # def get_queryset(self):
+    #     return Item.objects.order_by('-post_created')
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super(ItemDetailView, self).get_context_data(**kwargs)
+    #     return context
+
+
 class LandingApplyDetail(DetailView):
     model = LandingApply
 
@@ -39,13 +51,8 @@ class PostListView(ListView):
         return Post.objects.order_by('-post_created')
 
 
-class ItemDetailView(DetailView):
-    model = Item
+class PostDetailView(DetailView):
+    model = Post
 
-
-    # def get_queryset(self):
-    #     return Item.objects.order_by('-post_created')
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super(ItemDetailView, self).get_context_data(**kwargs)
-    #     return context
+    def get_queryset(self):
+        return Post.objects.order_by('-post_created')

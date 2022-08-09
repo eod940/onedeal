@@ -1,7 +1,5 @@
 const IMP = window.IMP;
-const merchant_uid =
-
-IMP.init("imp74307179");
+const merchant_uid = IMP.init("imp74307179");
 
 function requestPay() {
     // IMP.request_pay(param, callback) 결제창 호출

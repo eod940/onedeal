@@ -1,0 +1,104 @@
+{% extends 'onedeal/index.html' %}
+
+{% load humanize %}
+
+{% block title %}{{ object.post_title }} - 원딜텔레콤{% endblock %}
+
+{% block mainContent %}
+<!-- Title -->
+    {% if object.post_img %}
+        <img class="img-fluid rounded" src="{{ object.post_img.url }}" alt="{{ object.post_name }}">
+    {% endif %}
+    <h1 class="m-3">{{ object.post_title }}</h1>
+    <!-- Preview Image -->
+
+{% if object.category %}
+    <span class="badge bg-primary float-right m-2">{{ object.category }}</span>
+{% else %}
+    <span class="badge bg-primary float-right m-2">미분류</span>
+{% endif %}
+
+<!-- Author -->
+<p class="m-2">
+    <a href="#">{{ object.post_author}}</a>
+</p>
+
+<hr>
+
+<!-- Date/Time -->
+<p class="m-2">Posted on {{ object.post_created }}
+    {% if request.user == object.author%}
+    <button type="button" class="btn btn-sm btn-outline-secondary float-right" onclick="location.href='{{ object.get_update_url }}'">EDIT</button>
+    {% endif %}
+</p>
+
+<hr>
+
+
+<!-- Post Content -->
+{#{{ object.get_markdown_content | safe }}#}
+    <div class="m-2">
+        {{ object.post_content }}
+    </div>
+<br>
+<hr>
+
+<!-- Comments Form -->
+{#<div class="card my-4">#}
+{#    <h5 class="card-header">Leave a Comment:</h5>#}
+{#    <div class="card-body">#}
+{#        <form method="post" action="{{ object.get_absolute_url }}new_comment/">{% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                {{ comment_form | crispy }}#}
+{#            </div>#}
+{#            <button type="submit" class="btn btn-primary">Submit</button>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<div id="comment-list">#}
+{#<!-- Single Comment -->#}
+{#    {% for comment in object.comment_set.all %}#}
+{#    <div class="media mb-4" id="comment-id-{{ comment.pk }}">#}
+{#        {% if comment.author.socialaccount_set.all.0.get_avatar_url %}#}
+{#        <img width="50px" class="d-flex mr-3 rounded-circle" src="{{ comment.author.socialaccount_set.all.0.get_avatar_url }}" alt="get_avatar_url">#}
+{#        {% else %}#}
+{#        <img width="50px" class="d-flex mr-3 rounded-circle" src="https://www.placehold.it/50x50" alt="get_avatar_url">#}
+{#        {% endif %}#}
+{#        <div class="media-body">#}
+{#            {% if comment.author == request.user %}#}
+{#            <button class="btn btn-sm btn-info float-right" onclick="location.href='/blog/edit_comment/{{ comment.pk }}/'">edit</button>#}
+{#            <button class="btn btn-sm btn-danger float-right" data-bs-toggle="modal" data-bs-target="#deleteCommentModal-{{ comment.pk }}">delete</button>#}
+{#            {% endif %}#}
+{#            <h5 class="mt-0">{{ comment.author }} <small class="text-muted"> {{ comment.created_at }} </small></h5>#}
+{#            {{ comment.get_markdown_content | safe }}#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endfor %}#}
+{#</div>#}
+
+<!-- Modal -->
+{% for comment in object.comment_set.all %}
+    {% if user == comment.author %}
+    <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">삭제 메시지</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    정말로 삭제하시겠습니까?
+                    <p>{{ comment.get_markdown_content | safe }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                        onclick="location.href='/blog/delete_comment/{{ comment.pk }}/'">yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
+{% endblock %}

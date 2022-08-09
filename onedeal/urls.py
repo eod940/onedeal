@@ -22,5 +22,6 @@ urlpatterns = [
     # path('<int:pk>/', views.LandingApplyDetail.as_view()),
     path('create/', views.LandingApplyCreateView.as_view()),
     path('post/', views.PostListView.as_view()),
-    path('item/<int:pk>/', views.ItemDetailView.as_view())
+    path('item/<int:pk>/', views.ItemDetailView.as_view()),
+    path('post/<int:pk>/', views.PostDetailView.as_view())
 ]
