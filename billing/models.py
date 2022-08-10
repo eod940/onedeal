@@ -52,7 +52,6 @@ class PointTransactionManager(models.Manager):
         return super(PointTransactionManager, self).filter(user=user)[:num]
 
 
-# Create your models here.
 class Point(models.Model):
     # user = models.OneToOneField(MyUser)
     point = models.PositiveIntegerField(default=0)
