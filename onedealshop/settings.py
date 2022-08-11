@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'onedeal',
     'billing',
+    'accounts',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'onedealshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,3 +131,5 @@ MEDIA_URL = '/media/'
 
 IAMPORT_KEY = MY_IAMPORT_KEY
 IAMPORT_SECRET = MY_IAMPORT_SECRET_KEY
+
+LOGIN_REDIRECT_URL = "/"

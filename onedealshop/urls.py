@@ -22,6 +22,7 @@ from django.urls import include
 urlpatterns = [
     path('onedeal/', include('onedeal.urls')),
     path('billing/', include('billing.urls')),
+    path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
 ]
 
