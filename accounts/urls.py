@@ -5,5 +5,5 @@ from . import views
 app_name = "accounts"
 
 urlpatterns = [
-    path('/', include('django.contrib.auth.urls')),
+    path('auth/', include('django.contrib.auth.urls')),
 ]
